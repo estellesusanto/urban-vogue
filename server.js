@@ -1,8 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require("path");
+const url = require("url");
 
 const app = express();
 const port = process.env.PORT || 5000;
+
+app.use(express.static(path.join(__dirname, "/client/build")));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,4 +24,13 @@ app.post('/api/world', (req, res) => {
   );
 });
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build/index.html"));
+});
+
+app.listen(port, () => console.log(`Express Server running on port ${port}`));
+
+process.on("SIGINT", () => {
+  // config.disconnectDB();
+  process.exit(0);
+});

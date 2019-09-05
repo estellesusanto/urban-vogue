@@ -1,0 +1,8 @@
+runtime: nodejs10
+# env: flex
+
+# handlers:
+#   - url: /
+#     static_files:build/index.html
+#     upload: build/index.html
+
