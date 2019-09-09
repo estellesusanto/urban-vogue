@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.route('/blazers/:blazerId')
   .get(function(req, res, next) {
     connection.query(
-      "SELECT * FROM `blazers` WHERE blazerId = ? LIMIT 3", req.params.userId,
+      "select * from uv_db.blazers where blazerId="+req.params.blazerId+";",
       function(error, results, fields) {
         if (error) throw error;
         res.json(results);
