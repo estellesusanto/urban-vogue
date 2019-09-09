@@ -38,7 +38,7 @@ class App extends Component {
     // await allows us to wait for the response of an asynchronous request 
     //(a Promise to resolve to a value, request to finish)
     // defining the post call
-    const response = await fetch('/api/world', {
+    const response = await fetch('/api/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
